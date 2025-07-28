@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hotel VIDA VIEW - Full Animasi</title>
+  <style>
+    form input, form select {
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+form button {
+  background-color: #ff8800;
+  color: white;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+    body.dark {
+  background: #111;
+  color: #eee;
+}
+body.dark header, body.dark .section, body.dark .card, body.dark footer {
+  background: #222 !important;
+  color: #eee !important;
+}
+body.dark nav a {
+  color: #ccc;
+}
+body.dark nav a.active, body.dark nav a:hover {
+  color: #ffb84d;
+  border-color: #ffb84d;
+  background: linear-gradient(90deg,#2d2d2d 60%,#3a2e1a 100%);
+}
+body.dark .hero {
+  color: #fff;
+  background: linear-gradient(120deg,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.65) 100%), url('kamar tidur.jpg') center/cover no-repeat;
+}
+body.dark .card .content h3,
+body.dark .section h2 {
+  color: #ffb84d !important;
+  text-shadow: 0 2px 8px #00000044;
+}
+body.dark .card .content p,
+body.dark .card .content ul,
+body.dark .section p,
+body.dark label,
+body.dark select,
+body.dark input,
+body.dark .caption {
+  color: #eee !important;
+}
+body.dark .card {
+  border-color: #444;
+}
+body.dark .card .content button,
+body.dark .popup-content button.close-popup,
+body.dark #closeNotif {
+  background: linear-gradient(90deg,#ffb84d 60%,#ff8800 100%) !important;
+  color: #222 !important;
+}
+body.dark .popup-content,
+body.dark #notifPemesanan {
+  background: #222 !important;
+  color: #eee !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+}
+body.dark .slider-container {
+  background: rgba(34,34,34,0.85);
+}
+body.dark .slider-dots .dot {
+  background: #444;
+  border-color: #222;
+}
+body.dark .slider-dots .dot.active {
+  background: #ffb84d;
+  border-color: #ffb84d;
+}
+body.dark .slide .caption {
+  color: #fff !important;
+  background: linear-gradient(0deg,rgba(0,0,0,0.7) 80%,rgba(0,0,0,0));
+}
+body.dark input, body.dark select {
+  background: #181818;
+  color: #eee;
+  border: 1px solid #444;
+}
+body.dark ::placeholder {
+  color: #aaa;
+}
+body.dark #darkToggle {
+  background: rgba(34,34,34,0.95) !important;
+}
+body.dark #darkToggle svg {
+  filter: drop-shadow(0 2px 8px #ffb84d33);
+}
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      /* Background gradient pastel modern dengan efek radial */
+      background: linear-gradient(120deg, #f8fafc 0%, #e0e7ef 50%, #f7e9ff 100%);
+      min-height: 100vh;
+      color: #333;
+      overflow-x: hidden;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: radial-gradient(circle at 80% 10%, #ffe3b3 0%, transparent 60%),
+                  radial-gradient(circle at 10% 90%, #c7eaff 0%, transparent 70%);
+      opacity: 0.45;
+      z-index: 0;
+      pointer-events: none;
+    }
+    header, .section, footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      background: rgba(255,255,255,0.95);
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      box-shadow: 0 2px 18px rgba(0,0,0,0.08);
+      z-index: 1000;
+      border-radius: 0 0 18px 18px;
+      backdrop-filter: blur(2px);
+    }
+    header img {
+      height: 60px;
+      animation: floatLogo 3s ease-in-out infinite;
+      filter: drop-shadow(0 2px 8px #ff880033);
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      font-size: 1.08rem;
+      letter-spacing: 0.5px;
+      padding-bottom: 3px;
+      transition: color 0.3s, border-bottom 0.3s;
+      border-bottom: 2px solid transparent;
+    }
+    nav a:hover, nav a.active {
+      color: #ff8800;
+      border-bottom: 2px solid #ff8800;
+      background: linear-gradient(90deg,#fffbe6 60%,#ffe3b3 100%);
+      border-radius: 0 0 8px 8px;
+    }
+
+    .hero {
+      background: linear-gradient(120deg,rgba(0,0,0,0.25) 0%,rgba(0,0,0,0.05) 100%), url('kamar tidur.jpg') center/cover no-repeat;
+      height: 85vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      color: white;
+      animation: fadeIn 2s ease;
+      border-radius: 0 0 32px 32px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg,rgba(0,0,0,0.25) 0%,rgba(0,0,0,0.45) 100%);
+      z-index: 0;
+      border-radius: 0 0 32px 32px;
+    }
+    .hero > * {
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      animation: slideInDown 1s ease-out;
+      text-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      animation: slideInUp 1s ease-out;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.13);
+    }
+
+    .section {
+      padding: 60px 20px;
+      text-align: center;
+      background: rgba(255,255,255,0.85);
+      border-radius: 22px;
+      margin: 2rem auto 2.5rem auto;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      max-width: 1200px;
+    }
+    .section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #ff8800;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 8px #ff880022;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: linear-gradient(120deg,#fffbe6 60%,#f7e9ff 100%);
+      width: 300px;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+      overflow: hidden;
+      transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), box-shadow 0.3s;
+      animation: fadeUp 1s ease both;
+      border: 1.5px solid #f3e1c2;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: scale(1.06) translateY(-6px);
+      box-shadow: 0 16px 40px rgba(255,136,0,0.10), 0 2px 8px #ff880033;
+      z-index: 2;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 18px 18px 0 0;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+
+    .card .content {
+      padding: 1.2rem 1rem 1.2rem 1rem;
+      text-align: left;
+    }
+
+    .card .content h3 {
+      margin-bottom: 0.5rem;
+      color: #ff8800;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .card .content p {
+      color: #444;
+      font-size: 1.05rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .card .content ul {
+      margin: 0 0 0.7rem 1.2rem;
+      padding: 0;
+      font-size: 0.97rem;
+      color: #666;
+      list-style: disc;
+    }
+
+    .card .content button {
+      background: linear-gradient(90deg,#ff8800 60%,#ffb84d 100%);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.6rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .card .content button:hover {
+      background: linear-gradient(90deg,#e07000 60%,#ff8800 100%);
+      transform: scale(1.08);
+    }
+
+    footer {
+      text-align: center;
+      background: #222;
+      color: white;
+      padding: 1.2rem;
+      border-radius: 18px 18px 0 0;
+      margin-top: 2rem;
+      font-size: 1.05rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 -2px 16px rgba(0,0,0,0.07);
+    }
+
+    @keyframes floatLogo {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideInDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes slideInUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+  <img src="logofix.png" alt="Logo VIDA VIEW" />
+  <nav>
+    <ul>
+      <li><a href="#beranda" class="active">Beranda</a></li>
+      <li><a href="#kamar">Kamar</a></li>
+      <li><a href="#galeri">Galeri</a></li>
+      <li><a href="#pemesanan">Pemesanan</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+  </nav>
+</header>
+
+  <section id="beranda" class="hero">
+    <h1>Selamat Datang di VIDA VIEW</h1>
+    <p>Hotel dengan pemandangan terbaik di Makassar</p>
+  </section>
+
+  <section id="kamar" class="section">
+  <h2>Kamar Kami</h2>
+  <p style="max-width:600px;margin:0 auto 2rem auto;color:#555;font-size:1.1rem;">
+    Pilih tipe kamar terbaik sesuai kebutuhan Anda. Setiap kamar di VIDA VIEW dirancang dengan kenyamanan, fasilitas modern, dan pemandangan indah untuk pengalaman menginap yang tak terlupakan.
+  </p>
+  <div class="cards">
+    <div class="card kamar-card" data-kamar="Deluxe Room" data-desc="Kamar luas dengan view kota, cocok untuk pasangan." data-img="kamar tidur.jpg">
+      <img src="kamar tidur.jpg" alt="Deluxe Room">
+      <div class="content">
+        <h3>Deluxe Room</h3>
+        <p>Kamar luas dengan view kota, cocok untuk pasangan.</p>
+        <ul style="margin:0 0 0.7rem 1.2rem;padding:0;font-size:0.97rem;color:#666;">
+          <li>Tempat tidur king size</li>
+          <li>Smart TV & WiFi gratis</li>
+          <li>Kamar mandi modern</li>
+        </ul>
+        <button class="lihat-detail">Lihat Detail</button>
+      </div>
+    </div>
+    <div class="card kamar-card" data-kamar="Suite Room" data-desc="Kenyamanan premium dengan fasilitas lengkap." data-img="suiteroom.jpg">
+      <img src="suiteroom.jpg" alt="Suite Room">
+      <div class="content">
+        <h3>Suite Room</h3>
+        <p>Kenyamanan premium dengan fasilitas lengkap.</p>
+        <ul style="margin:0 0 0.7rem 1.2rem;padding:0;font-size:0.97rem;color:#666;">
+          <li>Ruang tamu pribadi & minibar</li>
+          <li>Pemandangan kota & laut</li>
+          <li>Bathtub & perlengkapan mandi eksklusif</li>
+        </ul>
+        <button class="lihat-detail">Lihat Detail</button>
+      </div>
+    </div>
+    <div class="card kamar-card" data-kamar="Standard Room" data-desc="Nyaman dan terjangkau untuk semua tamu." data-img="standarroom.png">
+      <img src="standarroom.png" alt="Standard Room">
+      <div class="content">
+        <h3>Standard Room</h3>
+        <p>Nyaman dan terjangkau untuk semua tamu.</p>
+        <ul style="margin:0 0 0.7rem 1.2rem;padding:0;font-size:0.97rem;color:#666;">
+          <li>Tempat tidur nyaman</li>
+          <li>AC & TV kabel</li>
+          <li>Harga hemat, fasilitas lengkap</li>
+        </ul>
+        <button class="lihat-detail">Lihat Detail</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Popup Modal -->
+<div id="popupKamar" class="popup-modal">
+  <div class="popup-content">
+    <span class="close-popup">&times;</span>
+    <img id="popupImg" src="" alt="" style="width:100%;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.12);margin-bottom:1rem;">
+    <h3 id="popupTitle"></h3>
+    <p id="popupDesc"></p>
+    <button class="close-popup" style="margin-top:1rem;">Tutup</button>
+  </div>
+</div>
+
+<style>
+/* Popup Modal Style */
+.popup-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.35);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.5s;
+}
+.popup-modal.active {
+  display: flex;
+}
+.popup-content {
+  background: #fff;
+  border-radius: 18px;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  max-width: 350px;
+  width: 90vw;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  position: relative;
+  text-align: center;
+  animation: popupUp 0.5s cubic-bezier(.23,1.02,.32,1.01);
+}
+@keyframes popupUp {
+  from { transform: scale(0.7) translateY(60px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+.close-popup {
+  position: absolute;
+  top: 10px; right: 18px;
+  font-size: 1.7rem;
+  color: #ff8800;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.close-popup:hover {
+  color: #e07000;
+}
+.popup-content button.close-popup {
+  position: static;
+  display: inline-block;
+  margin: 0 auto;
+  font-size: 1rem;
+  background: #ff8800;
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.6rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.popup-content button.close-popup:hover {
+  background: #e07000;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Pop up kamar
+  const popup = document.getElementById('popupKamar');
+  const popupImg = document.getElementById('popupImg');
+  const popupTitle = document.getElementById('popupTitle');
+  const popupDesc = document.getElementById('popupDesc');
+  const closeBtns = document.querySelectorAll('.close-popup');
+
+  document.querySelectorAll('.lihat-detail').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const card = e.target.closest('.kamar-card');
+      popupImg.src = card.getAttribute('data-img');
+      popupTitle.textContent = card.getAttribute('data-kamar');
+      popupDesc.textContent = card.getAttribute('data-desc');
+      popup.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  closeBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      popup.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Tutup popup jika klik di luar konten
+  popup.addEventListener('click', function(e) {
+    if (e.target === popup) {
+      popup.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+});
+</script>
+  <section id="galeri" class="section">
+  <h2>Galeri Hotel</h2>
+  <div class="slider-container" style="max-width:600px;margin:auto;position:relative;">
+    <div class="slider">
+      <div class="slide active">
+        <img src="lobby.png" alt="Lobby" style="width:100%;border-radius:16px;">
+        <div class="caption">Lobby</div>
+      </div>
+      <div class="slide">
+        <img src="Restoran.png" alt="Restoran" style="width:100%;border-radius:16px;">
+        <div class="caption">Restoran</div>
+      </div>
+      <div class="slide">
+        <img src="kolang renang.png" alt="Kolam Renang" style="width:100%;border-radius:16px;">
+        <div class="caption">Kolam Renang</div>
+      </div>
+    </div>
+    <button class="slider-btn prev" aria-label="Sebelumnya">&#10094;</button>
+    <button class="slider-btn next" aria-label="Selanjutnya">&#10095;</button>
+    <div class="slider-dots"></div>
+  </div>
+</section>
+
+<style>
+.slider-container {
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(2px);
+  margin-bottom: 2rem;
+}
+.slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+}
+.slide {
+  display: none;
+  transition: opacity 0.7s;
+}
+.slide.active {
+  display: block;
+  animation: fadeIn 1s;
+}
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(135deg, #ff8800 60%, #ffb84d 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 1.7rem;
+  cursor: pointer;
+  opacity: 0.85;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.3s, transform 0.2s;
+  z-index: 2;
+}
+.slider-btn:hover {
+  background: linear-gradient(135deg, #e07000 60%, #ff8800 100%);
+  transform: translateY(-50%) scale(1.08);
+}
+.slider-btn.prev { left: 12px; }
+.slider-btn.next { right: 12px; }
+.slider-dots {
+  text-align: center;
+  margin-top: 14px;
+}
+.slider-dots .dot {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  margin: 0 5px;
+  background: #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  border: 2px solid #fff;
+}
+.slider-dots .dot.active {
+  background: #ff8800;
+  transform: scale(1.2);
+  border-color: #ff8800;
+}
+.slide .caption {
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(0deg,rgba(0,0,0,0.5) 80%,rgba(0,0,0,0));
+  padding: 12px 0 8px 0;
+  border-radius: 0 0 16px 16px;
+  margin-top: -48px;
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+@media (max-width: 700px) {
+  .slider-container { max-width: 98vw; }
+  .slide img { height: 180px; object-fit: cover; }
+}
+@keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const slides = document.querySelectorAll('.slider .slide');
+  const prevBtn = document.querySelector('.slider-btn.prev');
+  const nextBtn = document.querySelector('.slider-btn.next');
+  const dotsContainer = document.querySelector('.slider-dots');
+  let current = 0;
+  let timer;
+
+  function showSlide(idx) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === idx);
+      dotsContainer.children[i].classList.toggle('active', i === idx);
+    });
+    current = idx;
+  }
+
+  function nextSlide() {
+    showSlide((current + 1) % slides.length);
+  }
+  function prevSlide() {
+    showSlide((current - 1 + slides.length) % slides.length);
+  }
+
+  // Dots
+  if (dotsContainer.children.length === 0) {
+    slides.forEach((_, i) => {
+      const dot = document.createElement('span');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => showSlide(i));
+      dotsContainer.appendChild(dot);
+    });
+  }
+
+  nextBtn.onclick = nextSlide;
+  prevBtn.onclick = prevSlide;
+
+  // Auto slide
+  function startAutoSlide() {
+    timer = setInterval(nextSlide, 3500);
+  }
+  function stopAutoSlide() {
+    clearInterval(timer);
+  }
+  slides[0].parentElement.addEventListener('mouseenter', stopAutoSlide);
+  slides[0].parentElement.addEventListener('mouseleave', startAutoSlide);
+
+  showSlide(0);
+  startAutoSlide();
+});
+</script>
+<section id="pemesanan" class="section">
+  <h2>Form Pemesanan</h2>
+  <form id="formPemesanan" action="#" method="POST" style="max-width:600px; margin:auto; text-align:left;">
+    <label>Nama:</label><input type="text" name="nama" required><br>
+    <label>Email:</label><input type="email" name="email" required><br>
+    <label>Check-In:</label><input type="date" name="checkin" required><br>
+    <label>Check-Out:</label><input type="date" name="checkout" required><br>
+    <label>Tipe Kamar:</label>
+    <select name="tipe_kamar" required>
+      <option value="">--Pilih--</option>
+      <option value="standard">Standard</option>
+      <option value="deluxe">Deluxe</option>
+      <option value="suite">Suite</option>
+    </select><br>
+    <button type="submit">Pesan Sekarang</button>
+  </form>
+</section>
+
+  <section id="kontak" class="section">
+    <h2>Kontak Kami</h2>
+    <p>📞 085222736431 | ✉ info@vidaviewhotel.com</p>
+  </section>
+
+  <footer>
+    &copy; 2025 VIDA VIEW Hotel. All rights reserved.
+  </footer>
+
+  <script>
+   document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll("nav ul li a");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (scrollY >= sectionTop) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === "#" + current) {
+        link.classList.add("active");
+      }
+    });
+  });
+});
+  </script>
+<script>
+  // Highlight menu aktif
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll("nav ul li a");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (scrollY >= sectionTop) {
+        current = section.getAttribute("id");
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === "#" + current) {
+        link.classList.add("active");
+      }
+    });
+  });
+
+  // Reveal on scroll animation
+  const revealElements = document.querySelectorAll('.section, .card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  revealElements.forEach(el => {
+    el.classList.add('hidden');
+    observer.observe(el);
+  });
+</script>
+<style>
+/* Animasi muncul saat scroll */
+.hidden {
+  opacity: 0;
+  transform: translateY(60px) scale(0.98);
+  transition: all 0.8s cubic-bezier(.34,1.56,.64,1);
+}
+.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: all 0.8s cubic-bezier(.34,1.56,.64,1);
+}
+</style>
+<button id="darkToggle" aria-label="Toggle dark mode" style="
+  position:fixed;
+  bottom:24px;
+  right:24px;
+  z-index:999;
+  background:rgba(255,255,255,0.85);
+  border:none;
+  border-radius:50%;
+  box-shadow:0 4px 16px rgba(0,0,0,0.10);
+  width:54px;
+  height:54px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2rem;
+  cursor:pointer;
+  transition:background 0.3s, box-shadow 0.3s;
+  outline:none;
+">
+  <span id="darkIcon" style="transition:transform 0.4s;">
+    <!-- Icon awal: matahari -->
+    <svg id="iconSun" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="#ff8800" stroke-width="1.5">
+      <circle cx="12" cy="12" r="5" fill="#ffb84d"/>
+      <g stroke-linecap="round">
+        <line x1="12" y1="2" x2="12" y2="4"/>
+        <line x1="12" y1="20" x2="12" y2="22"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="2" y1="12" x2="4" y2="12"/>
+        <line x1="20" y1="12" x2="22" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </g>
+    </svg>
+    <!-- Icon bulan, hidden awal -->
+    <svg id="iconMoon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="#ff8800" stroke-width="1.5" style="display:none;">
+      <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" fill="#222"/>
+    </svg>
+  </span>
+</button>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const darkToggle = document.getElementById('darkToggle');
+  const iconSun = document.getElementById('iconSun');
+  const iconMoon = document.getElementById('iconMoon');
+  // Set mode awal
+  if(document.body.classList.contains('dark')) {
+    iconSun.style.display = 'none';
+    iconMoon.style.display = '';
+  }
+  darkToggle.onclick = function() {
+    document.body.classList.toggle('dark');
+    if(document.body.classList.contains('dark')) {
+      iconSun.style.display = 'none';
+      iconMoon.style.display = '';
+    } else {
+      iconSun.style.display = '';
+      iconMoon.style.display = 'none';
+    }
+  };
+});
+</script>
+<!-- Tambahkan di bawah form pemesanan -->
+<div id="notifPemesanan" style="display:none;position:fixed;top:30px;left:50%;transform:translateX(-50%);background:#fff;border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,0.18);padding:1.5rem 2.2rem;z-index:9999;text-align:center;min-width:280px;max-width:90vw;animation:fadeInNotif 0.5s;">
+  <div style="font-size:2.2rem;color:#ff8800;margin-bottom:0.5rem;">✅</div>
+  <div id="notifText" style="font-size:1.1rem;color:#333;margin-bottom:0.7rem;"></div>
+  <button id="closeNotif" style="background:#ff8800;color:#fff;border:none;border-radius:8px;padding:0.5rem 1.3rem;font-size:1rem;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.07);transition:background 0.2s;">Tutup</button>
+</div>
+<style>
+@keyframes fadeInNotif {
+  from { opacity:0; transform:translateY(-40px) scale(0.95);}
+  to { opacity:1; transform:translateY(0) scale(1);}
+}
+@keyframes popupNotif {
+  0% { opacity: 0; transform: scale(0.7) translateY(-30px);}
+  60% { opacity: 1; transform: scale(1.08) translateY(5px);}
+  100% { opacity: 1; transform: scale(1) translateY(0);}
+}
+#notifPemesanan {
+  animation: popupNotif 0.7s cubic-bezier(.34,1.56,.64,1) both;
+}
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector("#formPemesanan");
+  const notif = document.getElementById("notifPemesanan");
+  const notifText = document.getElementById("notifText");
+  const closeNotif = document.getElementById("closeNotif");
+
+  const showNotification = ({ nama, email, checkin, checkout, tipe }) => {
+    notif.style.display = "block";
+    notif.style.animation = "popupNotif 0.65s cubic-bezier(.34,1.56,.64,1)";
+    notifText.innerHTML = `
+      <b>Terima kasih, ${nama}!</b><br>
+      Pemesanan kamar <b style="color:#ff8800;text-transform:capitalize">${tipe}</b> berhasil.<br>
+      <span style="color:#555;">Konfirmasi dikirim ke:</span> <b>${email}</b><br>
+      <span style="color:#555;">Tanggal:</span> <b>${checkin} s/d ${checkout}</b>
+    `;
+    setTimeout(() => {
+      notif.style.display = "none";
+    }, 7000);
+  };
+
+  closeNotif.onclick = () => {
+    notif.style.display = "none";
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = {
+      nama: form?.elements["nama"]?.value.trim(),
+      email: form?.elements["email"]?.value.trim(),
+      checkin: form?.elements["checkin"]?.value,
+      checkout: form?.elements["checkout"]?.value,
+      tipe: form?.elements["tipe_kamar"]?.value,
+    };
+    showNotification(data);
+    form.reset();
+  };
+
+  form?.addEventListener("submit", handleSubmit);
+});
+</script>
+</body>
+</html>

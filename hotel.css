@@ -1,0 +1,242 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  line-height: 1.6;
+  background: #f9f9f9;
+  color: #333;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px 0;
+  background-image: url('https://source.unsplash.com/1600x900/?hotel,interior');
+}
+
+header {
+  background: #ffffff;
+  color: white;
+  padding: 5px 0;
+  padding-top: 20px;
+}
+
+header h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.logo {
+  width: 250px;
+  height: auto;
+  margin: 20px 0;
+  margin-top: 10px;
+}
+
+nav a {
+  color:#003366;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #99E9FF;
+  transform: scale(1.2);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+              url('vida.jpg') no-repeat center center/cover;
+  color: white;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.section {
+  padding: 60px 0;
+  background: white;
+}
+
+.section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #003366;
+}
+
+.card-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  background: #f1f1f1;
+  padding: 20px;
+  border-radius: 8px;
+  width: 280px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.fasilitas-grid {
+  display: flex;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+.fasilitas-item {
+  text-align: center;
+}
+
+.fasilitas-item img {
+  width: 100%;
+  max-width: 350px;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.fasilitas-item img:hover {
+  transform: scale(1.05);
+}
+
+.fasilitas-item p {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+
+footer {
+  background: #003366;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+}
+
+ body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333; 
+    }
+
+     body {
+      font-family: Arial, sans-serif;
+      background-color: #eaeaea;
+      padding: 20px;
+    }
+
+    .form-container {
+      background-image: url('vida.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      color: #fff;
+      position: relative;
+    }
+
+    /* Lapisan transparan agar teks tetap terbaca */
+    .form-overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 12px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      gap: 20px;
+    }
+
+    .form-group {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    input, select {
+      background-color: #fff;
+      color: #000;
+    }
+
+    
